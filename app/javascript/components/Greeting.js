@@ -29,12 +29,16 @@ const Greeting = () => {
 
   const rndInt = Math.floor(Math.random() * 4) + 1;
 
+  function findMessage(messages) {
+    return messages.filter((message) => message.id === rndInt);
+  }
+
   return (
 
     <div className="display">
       <h2>Display random messages from Redux </h2>
-      {messages.map((message, index) => (
-        <div id={index}>{message.message}</div>
+      {messages.filter((message) => message.id === rndInt).map((message) => (
+        <div>{message.message}</div>
       ))}
     </div>
   );

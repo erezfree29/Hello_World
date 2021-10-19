@@ -1,3 +1,6 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
@@ -24,13 +27,15 @@ const Greeting = () => {
     displayBody(messages);
   }, [messages]);
 
-  const hello = () => messages[0] && messages[Math.floor(Math.random() * messages.length)].body;
-  console.log(messages[0].message);
+  const rndInt = Math.floor(Math.random() * 4) + 1;
+
   return (
 
     <div className="display">
       <h2>Display random messages from Redux </h2>
-      <p>{messages && hello()}</p>
+      {messages.map((message, index) => (
+        <div id={index}>{message.message}</div>
+      ))}
     </div>
   );
 };
